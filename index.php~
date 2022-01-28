@@ -1,17 +1,16 @@
 <?php
 require('./config/Database.php');
+use config\Database;
 
-if(isset($_POST['username'])){
+if(isset($_POST)){
+
     $db = (new Database)->connect();
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $result = $db->query("SELECT id FROM users WHERE username='$username' AND password='$password'");
+    $db->query("SELECT id FROM users WHERE username='$username' AND password='$password'");
 
-    if($result->num_rows > 0){
-        header('Location: /admin');
-    }  
- 
+    echo $db->affected_rows;
 }
 
 include('./template/header.php'); ?>
