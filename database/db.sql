@@ -53,6 +53,13 @@ CREATE TABLE scores(
 );
 
 
-/* Libs */
+/*********** Libs ***********/
+
+/* test data */
+INSERT INTO degrees(grade) VALUES (6),(7),(8),(9),(10),(11);
+INSERT INTO user_types(type) VALUES ("teacher"), ("student");
+INSERT INTO users(fullname, email, password, grade_id, user_type) VALUES ('Aurora Code', 'auroacode@code.com', 'auroracode', null, 1),('Andres Felipe', 'student@gmail.com', '12345', 2, 2);
+
+
 
 SELECT tests.id, tests.title, tests.description, scores.* FROM tests LEFT JOIN scores ON scores.test_id=tests.id WHERE tests.grade_id=2 AND (scores.user_id!=1 OR scores.id IS NULL);

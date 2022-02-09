@@ -28,4 +28,11 @@ class Database {
     {
         return $this->dbConnect;
     }
+
+    public function getUserType($userTypeId){
+        $result = $this->dbConnect->query("SELECT type FROM user_types WHERE id='$userTypeId'");
+        $user_type = $result->fetch_array();
+        
+        return $user_type[0];
+    }
 }

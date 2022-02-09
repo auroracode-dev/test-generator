@@ -1,17 +1,27 @@
 <?php
 require('./config/Database.php');
 
-if(isset($_POST['username'])){
-    $db = (new Database)->connect();
-    $username = $_POST['username'];
+if(isset($_POST['email'])){
+    $database = new Database();
+    $db = $database->connect();
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $result = $db->query("SELECT user_type FROM users WHERE username='$username' AND password='$password'");
+    $result = $db->query("SELECT user_type FROM users WHERE email='$email' AND password='$password'");
 
     if($result->num_rows > 0){
-        $value = $result->fetch_array();
-        $result = $db->query("SELECT type FROM user_types WHERE id='$value[0]'");
-        header('Location: /admin');
+        $user_type = $result->fetch_array();
+        $user_type = $database->getUserType($user_type[0]);
+        echo "Hello";
+        
+        switch ($user_type) {
+            case 'teacher':
+                header('Location: /admin');
+                break;    
+            case 'student':
+                header('Location: /student_view.php');
+                break;
+        }
     }  
  
 }
@@ -23,8 +33,8 @@ include('./template/header.php'); ?>
     <div class="card-header fs-2 text-center">Login</div>
     <div class="card-body d-flex flex-column">
         <div class="mb-3">
-            <label for="username" class="form-label">Nombre de usuario</label>
-            <input name="username" type="text" class="form-control" id="username" placeholder="name@example.com">
+            <label for="email" class="form-label">Correo</label>
+            <input name="email" type="text" class="form-control" id="email" placeholder="name@example.com">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>

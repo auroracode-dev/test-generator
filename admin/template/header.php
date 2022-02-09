@@ -1,10 +1,3 @@
-<?php 
-
-session_start();
-$_SESSION['user_id'] = 1;
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,7 +12,7 @@ $_SESSION['user_id'] = 1;
 
     <nav class="navbar navbar-dark bg-dark px-4">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 fs-3">Adminitrator</span>
+            <a href="/admin" class="navbar-brand mb-0 fs-3">Administrator</a>
         </div>
     </nav>
 

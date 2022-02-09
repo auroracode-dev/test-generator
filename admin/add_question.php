@@ -1,37 +1,25 @@
-<?php include('./template/header.php'); ?>
+<?php
+include_once('../middlewares/auth.php');
 
-<form method="post" class="card w-75 mt-4 mx-auto">
-    <div class="card-header d-flex align-items-center justify-content-between">
-        <p class="fs-3 mb-0">Añadir una nueva pregunta</p>
-        
-        <button class="btn btn-lg btn-primary" type="submit">Crear pregunta</button>
-    </div>
-    <div class="card-body">
-        <div class="form-group">
-            <label for="question" class="form-label fw-bold fs-5">Escriba la pregunta</label>
-            <textarea name="question" id="question" rows="5" class="form-control"></textarea>
-        </div>
+require_once '../config/Database.php';
 
-        <div class="form-group mt-2">
-            <label for="answer_a" class="form-label fw-bold fs-6">Respuesta A:</label>
-            <textarea name="answer_a" id="answer_a" rows="5" class="form-control"></textarea>
-        </div>
+$db = (new Database)->connect();
 
-        <div class="form-group mt-2">
-            <label for="answer_b" class="form-label fw-bold fs-6">Respuesta B:</label>
-            <textarea name="answer_b" id="answer_b" rows="5" class="form-control"></textarea>
-        </div>
+$test_id = $_POST['test_id'];
 
-        <div class="form-group mt-2">
-            <label for="answer_c" class="form-label fw-bold fs-6">Respuesta C:</label>
-            <textarea name="answer_c" id="answer_c" rows="5" class="form-control"></textarea>
-        </div>
+$question = $_POST['question'];
+$answer_a =$_POST['answer_a'];
+$answer_b =$_POST['answer_b'];
+$answer_c =$_POST['answer_c'];
+$answer_d =$_POST['answer_d'];
+$correct = $_POST['correct'];
 
-        <div class="form-group mt-2">
-            <label for="answer_d" class="form-label fw-bold fs-6">Respuesta D:</label>
-            <textarea name="answer_d" id="answer_d" rows="5" class="form-control"></textarea>
-        </div>
-    </div>
-</form>
+$stmt = $db->prepare("INSERT INTO questions(question, answer_a, answer_b, answer_c, answer_d, correct, test_id) VALUES (?,?,?,?,?,?,?)");
 
-<?php include('./template/footer.php'); ?>
+$stmt->bind_param('ssssssi', $question, $answer_a, $answer_b, $answer_c, $answer_d, $correct, $test_id);
+
+$stmt->execute();
+
+header("Location: /admin/test.php?test_id=".$test_id."&title=".$_GET['title']);
+
+?>

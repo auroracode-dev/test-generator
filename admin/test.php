@@ -1,4 +1,8 @@
-<?php include('./template/header.php'); ?>
+<?php 
+include_once('../middlewares/auth.php');
+
+include('./template/header.php'); 
+?>
 
 <?php  
 require_once('../config/Database.php');
@@ -16,16 +20,18 @@ $result = $db->query($query);
 <div class="d-flex align-items-center justify-content-between">
     <p class="fs-1"><?= $test_title ?></p>
     
-    <a href="/admin/add_question.php" class="btn btn-primary fs-5">Agregar una pregunta</a>
+    <a href="/admin/question_view.php?test_id=<?= $test_id ?>&title=<?= $test_title ?>" class="btn btn-primary fs-5">Agregar una pregunta</a>
 </div>
 
 <?php while($item = $result->fetch_assoc()) { ?>
-<div class="card">
-    <div class="card-header pb-3">
+<div class="card mt-4">
+    <div class="card-header pb-3 d-flex flex-column">
         <?= $item['question']; ?> 
 
-        <a href="/admin/edit_question.php" class="btn btn-primary">Editar pregunta</a>
-        <a href="/admin/delete_question.php" class="btn btn-danger mx-2">Eliminar pregunta</a>
+        <div class="mt-2">
+            <a href="/admin/edit_question.php" class="btn btn-primary">Editar pregunta</a>
+            <a href="/admin/delete_question.php" class="btn btn-danger mx-2">Eliminar pregunta</a>  
+        </div>
     </div>
     <div class="card-body">
         <ul type="a" class="list-group">
