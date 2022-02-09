@@ -36,7 +36,7 @@ $tests = $db->query("SELECT tests.id, tests.title, tests.description, scores.* F
                         <?= $_SESSION['fullname'] ?>
                     </a>
                     <ul class="dropdown-menu position-absolute" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Cerrar sesiòn</a></li>
+                        <li><a class="dropdown-item" href="/logout.php">Cerrar sesiòn</a></li>
                     </ul>
                 </li>
             </ul>

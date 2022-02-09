@@ -62,4 +62,6 @@ INSERT INTO users(fullname, email, password, grade_id, user_type) VALUES ('Auror
 
 
 
-SELECT tests.id, tests.title, tests.description, scores.* FROM tests LEFT JOIN scores ON scores.test_id=tests.id WHERE tests.grade_id=2 AND (scores.user_id!=1 OR scores.id IS NULL);
+-- SELECT tests.id, tests.title, tests.description, scores.* FROM tests LEFT JOIN scores ON scores.test_id=tests.id WHERE tests.grade_id=2 AND (scores.user_id!=1 OR scores.id IS NULL);
+
+-- SELECT tests.title, questions.* FROM tests LEFT JOIN questions ON questions.test_id = tests.id WHERE tests.id = 1;
