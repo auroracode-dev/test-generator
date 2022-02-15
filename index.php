@@ -1,27 +1,34 @@
 <?php
-require('./config/Database.php');
+require_once('./config/Database.php');
+session_start();
 
+if (isset($_SESSION['user_id'])) {
+    $redirect = $_SESSION['user_type'] == 'teacher' ? 'admin' : 'student_view.php';
+    header('Location: /'.$redirect);
+} 
 if(isset($_POST['email'])){
     $database = new Database();
     $db = $database->connect();
+
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $result = $db->query("SELECT user_type FROM users WHERE email='$email' AND password='$password'");
+    $result = $db->query("SELECT id, fullname, grade_id, user_type FROM users WHERE email='$email' AND password='$password'");
 
     if($result->num_rows > 0){
-        $user_type = $result->fetch_array();
-        $user_type = $database->getUserType($user_type[0]);
-        echo "Hello";
+        $user = $result->fetch_assoc();
+        $user_type = $database->getUserType($user['user_type']);
         
-        switch ($user_type) {
-            case 'teacher':
-                header('Location: /admin');
-                break;    
-            case 'student':
-                header('Location: /student_view.php');
-                break;
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['fullname'] = $user['fullname'];
+        $_SESSION['user_type'] = $user_type;
+
+        if($user_type == 'teacher') {
+            header('Location: /admin');
         }
+        
+        $_SESSION['grade_id'] = $user['grade_id'];
+        header('Location: /student_view.php');
     }  
  
 }

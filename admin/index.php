@@ -1,9 +1,8 @@
 <?php
-include_once('../middlewares/auth.php');
-
+require_once('../middlewares/auth.php');
+require_once('../config/Database.php');
 include('./template/header.php');
 
-require_once('../config/Database.php');
 
 $db = (new Database())->connect();
 
@@ -88,7 +87,8 @@ $result = $db->query("SELECT * FROM tests ORDER BY id DESC");
                 <div class="card-body">
                     <p><?= $test['description'] ?></p>
                     <div>
-                        <a href="/admin/test.php?test_id=<?= $test['id'] ?>&title=<?= $test['title'] ?>" class="btn btn-primary">Ver test</a>
+                        <a href="/admin/test.php?test_id=<?= $test['id'] ?>&title=<?= $test['title'] ?>" class="btn btn-primary">Ver preguntas</a>
+                        <a href="/admin/scores.php?test_id=<?= $test['id'] ?>&title=<?= $test['title'] ?>" class="btn btn-info ms-2">Ver puntajes</a>
                         <a href="/admin?test_edit_id=<?= $test['id'] ?>" class="btn btn-success mx-2">Editar</a>
                         <a href="/admin/delete_test.php?test_id=<?= $test['id'] ?>" class="btn btn-danger">Eliminar</a>
                     </div>

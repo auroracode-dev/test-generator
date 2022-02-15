@@ -1,5 +1,5 @@
 <?php
-include_once('../middlewares/auth.php');
+require_once('../middlewares/auth.php');
 
 require_once '../config/Database.php';
 

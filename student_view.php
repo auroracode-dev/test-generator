@@ -7,7 +7,7 @@ $db = (new Database)->connect();
 $user_id = $_SESSION['user_id'];
 $user_grade = $_SESSION['grade_id'];
 
-$tests = $db->query("SELECT tests.id, tests.title, tests.description, scores.* FROM tests LEFT JOIN scores ON scores.test_id=tests.id WHERE tests.grade_id='$user_grade' AND (scores.user_id!='$user_id' OR scores.id IS NULL)");
+$tests = $db->query("SELECT tests.id, tests.title, tests.description FROM tests LEFT JOIN scores ON scores.test_id=tests.id WHERE tests.grade_id='$user_grade' AND (scores.user_id!='$user_id' OR scores.id IS NULL)");
 
 ?>
 
@@ -50,12 +50,11 @@ $tests = $db->query("SELECT tests.id, tests.title, tests.description, scores.* F
         <h1 class="fs-2 my-4">Evaluaciones sin presentar</h1>
         
         <?php while ($test = $tests->fetch_assoc()) { ?>
-
             <div class="card mt-4">
                 <div class="card-header"><?= $test['title'] ?></div>
                 <div class="card-body"> 
                     <p><?= $test['description'] ?></p>
-                    <a href="#" class="btn btn-primary">Presentar Evaluaciones</a>
+                    <a href="/take.php?test_id=<?= $test['id'] ?>&test_title=<?= $test['title'] ?>" class="btn btn-primary">Presentar Evaluaciones</a>
                 </div>
             </div>
 

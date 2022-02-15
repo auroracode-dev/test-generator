@@ -26,9 +26,9 @@ CREATE TABLE tests(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	title VARCHAR(400) NOT NULL,
 	description VARCHAR(450) NULL,
-  grade_id INT NOT NULL,
+  	grade_id INT NOT NULL,
 	user_id INT NOT NULL,
-  FOREIGN KEY(grade_id) REFERENCES degrees(id),
+  	FOREIGN KEY(grade_id) REFERENCES degrees(id),
 	FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
@@ -39,6 +39,7 @@ CREATE TABLE questions(
 	answer_b TEXT NOT NULL,
 	answer_c TEXT NOT NULL,
 	answer_d TEXT NOT NULL,
+	correct VARCHAR(1) NOT NULL,
 	test_id INT NOT NULL,
 	FOREIGN KEY(test_id) REFERENCES tests(id)
 );
@@ -65,3 +66,5 @@ INSERT INTO users(fullname, email, password, grade_id, user_type) VALUES ('Auror
 -- SELECT tests.id, tests.title, tests.description, scores.* FROM tests LEFT JOIN scores ON scores.test_id=tests.id WHERE tests.grade_id=2 AND (scores.user_id!=1 OR scores.id IS NULL);
 
 -- SELECT tests.title, questions.* FROM tests LEFT JOIN questions ON questions.test_id = tests.id WHERE tests.id = 1;
+
+SELECT users.id, users.fullname, scores.score as Correct_Questios FROM scores LEFT JOIN users ON scores.user_id = users.id WHERE scores.test_id = 4;

@@ -1,5 +1,5 @@
 <?php 
-include_once('../middlewares/auth.php');
+require_once('../middlewares/auth.php');
 
 include('./template/header.php'); 
 ?>
@@ -17,20 +17,20 @@ $result = $db->query($query);
 
 ?>
 
-<div class="d-flex align-items-center justify-content-between">
+<div class="d-flex align-items-center justify-content-between mt-4">
     <p class="fs-1"><?= $test_title ?></p>
     
     <a href="/admin/question_view.php?test_id=<?= $test_id ?>&title=<?= $test_title ?>" class="btn btn-primary fs-5">Agregar una pregunta</a>
 </div>
 
 <?php while($item = $result->fetch_assoc()) { ?>
-<div class="card mt-4">
+<div class="card my-4">
     <div class="card-header pb-3 d-flex flex-column">
         <?= $item['question']; ?> 
 
         <div class="mt-2">
             <a href="/admin/edit_question.php" class="btn btn-primary">Editar pregunta</a>
-            <a href="/admin/delete_question.php" class="btn btn-danger mx-2">Eliminar pregunta</a>  
+            <a href="/admin/delete_question.php?question_id=<?= $item['id'] ?>&test_id=<?= $test_id ?>&test_title=<?= $test_title ?>" class="btn btn-danger mx-2">Eliminar pregunta</a>  
         </div>
     </div>
     <div class="card-body">
