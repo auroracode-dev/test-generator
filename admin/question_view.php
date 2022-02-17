@@ -1,7 +1,7 @@
-<?php 
+<?php
 require_once('../middlewares/auth.php');
 
-include('./template/header.php'); 
+include('./template/header.php');
 ?>
 
 <form method="post" action="add_question.php?title=<?= $_GET['title'] ?>" class="card w-75 mt-4 mx-auto">
@@ -16,7 +16,8 @@ include('./template/header.php');
     <div class="card-body">
         <div class="form-group">
             <label for="question" class="form-label fw-bold fs-5">Escriba la pregunta</label>
-            <textarea name="question" id="question" rows="5" class="form-control"></textarea>
+            <div class="text-white" id="editor"></div>
+            <textarea name="question" id="question" class="form-control" hidden></textarea>
         </div>
 
         <div class="form-group mt-2">
@@ -31,24 +32,32 @@ include('./template/header.php');
 
         <div class="form-group mt-2">
             <label for="answer_a" class="form-label fw-bold fs-6">Respuesta A:</label>
-            <textarea name="answer_a" id="answer_a" rows="5" class="form-control"></textarea>
+            <div id="qlEditorA"></div>
+            <textarea name="answer_a" id="answer_a" rows="5" class="form-control" hidden></textarea>
         </div>
 
         <div class="form-group mt-2">
             <label for="answer_b" class="form-label fw-bold fs-6">Respuesta B:</label>
-            <textarea name="answer_b" id="answer_b" rows="5" class="form-control"></textarea>
+            <div id="qlEditorB"></div>
+            <textarea name="answer_b" id="answer_b" rows="5" class="form-control" hidden></textarea>
         </div>
 
         <div class="form-group mt-2">
             <label for="answer_c" class="form-label fw-bold fs-6">Respuesta C:</label>
-            <textarea name="answer_c" id="answer_c" rows="5" class="form-control"></textarea>
+            <div id="qlEditorC"></div>
+            <textarea name="answer_c" id="answer_c" rows="5" class="form-control" hidden></textarea>
         </div>
 
         <div class="form-group mt-2">
             <label for="answer_d" class="form-label fw-bold fs-6">Respuesta D:</label>
-            <textarea name="answer_d" id="answer_d" rows="5" class="form-control"></textarea>
+            <div id="qlEditorD"></div>
+            <textarea name="answer_d" id="answer_d" rows="5" class="form-control" hidden></textarea>
         </div>
     </div>
 </form>
+
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="./js/handlerQuill.js"></script>
 
 <?php include('./template/footer.php'); ?>

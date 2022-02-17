@@ -7,6 +7,12 @@
 
     <!-- Bootswatch import -->    
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <!-- Include stylesheet QUilljs-->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> 
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
 

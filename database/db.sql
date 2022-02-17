@@ -34,11 +34,11 @@ CREATE TABLE tests(
 
 CREATE TABLE questions(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	question TEXT NOT NULL,
-	answer_a TEXT NOT NULL,
-	answer_b TEXT NOT NULL,
-	answer_c TEXT NOT NULL,
-	answer_d TEXT NOT NULL,
+	question MEDIUMTEXT NOT NULL,
+	answer_a MEDIUMTEXT NOT NULL,
+	answer_b MEDIUMTEXT NOT NULL,
+	answer_c MEDIUMTEXT NOT NULL,
+	answer_d MEDIUMTEXT NOT NULL,
 	correct VARCHAR(1) NOT NULL,
 	test_id INT NOT NULL,
 	FOREIGN KEY(test_id) REFERENCES tests(id)
@@ -67,4 +67,4 @@ INSERT INTO users(fullname, email, password, grade_id, user_type) VALUES ('Auror
 
 -- SELECT tests.title, questions.* FROM tests LEFT JOIN questions ON questions.test_id = tests.id WHERE tests.id = 1;
 
-SELECT users.id, users.fullname, scores.score as Correct_Questios FROM scores LEFT JOIN users ON scores.user_id = users.id WHERE scores.test_id = 4;
+-- SELECT users.id, users.fullname, scores.score as Correct_Questios FROM scores LEFT JOIN users ON scores.user_id = users.id WHERE scores.test_id = 4;

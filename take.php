@@ -32,10 +32,10 @@ include('./template/header.php');
                     </select>
                 </div>
 
-                <p class="mt-2"><span class="fw-bold fs-5">A.</span> <?= $question['answer_a'] ?></p>
-                <p class="mt-2"><span class="fw-bold fs-5">B.</span> <?= $question['answer_b'] ?></p>
-                <p class="mt-2"><span class="fw-bold fs-5">C.</span> <?= $question['answer_c'] ?></p>
-                <p class="mt-2"><span class="fw-bold fs-5">D.</span> <?= $question['answer_d'] ?></p>
+                <div class="mt-2 d-flex"><span class="fw-bold fs-6 mx-2">A.</span> <?= $question['answer_a'] ?></div>
+                <div class="mt-2 d-flex"><span class="fw-bold fs-6 mx-2">B.</span> <?= $question['answer_b'] ?></div>
+                <div class="mt-2 d-flex"><span class="fw-bold fs-6 mx-2">C.</span> <?= $question['answer_c'] ?></div>
+                <div class="mt-2 d-flex"><span class="fw-bold fs-6 mx-2">D.</span> <?= $question['answer_d'] ?></div>
             </div>
         </div>
 

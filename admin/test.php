@@ -17,6 +17,13 @@ $result = $db->query($query);
 
 ?>
 
+<!-- Custom Styles -->
+<style>
+    .card-header img {
+        width: 100%;
+    }
+</style>
+
 <div class="d-flex align-items-center justify-content-between mt-4">
     <p class="fs-1"><?= $test_title ?></p>
     
@@ -35,10 +42,10 @@ $result = $db->query($query);
     </div>
     <div class="card-body">
         <ul type="a" class="list-group">
-            <li class="list-group-item">A. <?= $item['answer_a']; ?></li>
-            <li class="list-group-item">B. <?= $item['answer_b']; ?></li>
-            <li class="list-group-item">C. <?= $item['answer_c']; ?></li>
-            <li class="list-group-item">D. <?= $item['answer_d']; ?></li>
+            <li class="list-group-item d-flex"><span class="mx-2">B. </span> <?= $item['answer_b']; ?></li>
+            <li class="list-group-item d-flex"><span class="mx-2">A. </span> <?= $item['answer_a']; ?></li>
+            <li class="list-group-item d-flex"><span class="mx-2">C. </span> <?= $item['answer_c']; ?></li>
+            <li class="list-group-item d-flex"><span class="mx-2">D. </span> <?= $item['answer_d']; ?></li>
         </ul>
     </div>
 </div>
