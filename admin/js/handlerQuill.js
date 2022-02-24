@@ -59,6 +59,14 @@ const answerBInput = document.getElementById('answer_b');
 const answerCInput = document.getElementById('answer_c');
 const answerDInput = document.getElementById('answer_d');
 
+//Update values of the inputs for edit page
+if (location.pathname == '/admin/edit_question_view.php') {
+  questionInput.value = quillQuestion.root.innerHTML;
+  answerAInput.value = quillResponseA.root.innerHTML;
+  answerBInput.value = quillResponseB.root.innerHTML;
+  answerCInput.value = quillResponseC.root.innerHTML;
+  answerDInput.value = quillResponseD.root.innerHTML;
+}
 
 quillQuestion.on('editor-change', () => {
   questionInput.value = quillQuestion.root.innerHTML;
@@ -69,11 +77,11 @@ quillResponseA.on('editor-change', () => {
 });
 
 quillResponseB.on('editor-change', () => {
-  answerBInput.value = quillResponseB .root.innerHTML;
+  answerBInput.value = quillResponseB.root.innerHTML;
 });
 
 quillResponseC.on('editor-change', () => {
-  answerCInput.value = quillResponseC .root.innerHTML;
+  answerCInput.value = quillResponseC.root.innerHTML;
 });
 
 quillResponseD.on('editor-change', () => {

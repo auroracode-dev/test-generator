@@ -36,14 +36,14 @@ $result = $db->query($query);
         <?= $item['question']; ?> 
 
         <div class="mt-2">
-            <a href="/admin/edit_question.php" class="btn btn-primary">Editar pregunta</a>
+            <a href="/admin/edit_question_view.php?question_id=<?= $item['id'] ?>&test_id=<?= $test_id ?>&test_title=<?= $test_title ?>" class="btn btn-primary">Editar pregunta</a>
             <a href="/admin/delete_question.php?question_id=<?= $item['id'] ?>&test_id=<?= $test_id ?>&test_title=<?= $test_title ?>" class="btn btn-danger mx-2">Eliminar pregunta</a>  
         </div>
     </div>
     <div class="card-body">
         <ul type="a" class="list-group">
-            <li class="list-group-item d-flex"><span class="mx-2">B. </span> <?= $item['answer_b']; ?></li>
             <li class="list-group-item d-flex"><span class="mx-2">A. </span> <?= $item['answer_a']; ?></li>
+            <li class="list-group-item d-flex"><span class="mx-2">B. </span> <?= $item['answer_b']; ?></li>
             <li class="list-group-item d-flex"><span class="mx-2">C. </span> <?= $item['answer_c']; ?></li>
             <li class="list-group-item d-flex"><span class="mx-2">D. </span> <?= $item['answer_d']; ?></li>
         </ul>
